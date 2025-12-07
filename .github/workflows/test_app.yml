@@ -1,0 +1,39 @@
+```yaml
+name: CI - test_app
+
+on:
+  push:
+    branches:
+      - main
+      - pipelinegen-setup
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install Python dependencies and pytest
+      run: |
+        pip install -r requirements.txt
+        pip install pytest # Install pytest to run tests
+      working-directory: . # The unit folder is the repository root
+
+    - name: Run tests (if present)
+      run: pytest
+      working-directory: . # The unit folder is the repository root
+      # pytest will automatically discover tests (e.g., files ending in _test.py or in a 'tests/' directory)
+      # If no tests are found, pytest will report it and exit appropriately.
+
+    - name: Build Docker image
+      run: docker build -f test_app.Dockerfile -t test_app .
+      # The command implicitly runs from the repository root by default,
+      # which is correct as the Dockerfile and build context are at the root.
+```
