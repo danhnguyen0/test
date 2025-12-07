@@ -1,4 +1,3 @@
-```yaml
 name: CI - test_app
 
 on:
@@ -36,4 +35,3 @@ jobs:
       run: docker build -f test_app.Dockerfile -t test_app .
       # The command implicitly runs from the repository root by default,
       # which is correct as the Dockerfile and build context are at the root.
-```
