@@ -1,4 +1,3 @@
-```yaml
 name: CI - test_app
 
 on:
@@ -35,4 +34,3 @@ jobs:
       # The Dockerfile is expected at the repository root as test_app.Dockerfile
       run: docker build -f test_app.Dockerfile -t test_app .
       # No working-directory needed as the Dockerfile is at the repo root and context is the repo root.
-```
