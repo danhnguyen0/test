@@ -33,4 +33,9 @@ jobs:
     - name: Build Docker image
       # The Dockerfile is expected at the repository root as test_app.Dockerfile
       run: docker build -f test_app.Dockerfile -t test_app .
+<<<<<<< HEAD
       # No working-directory needed as the Dockerfile is at the repo root and context is the repo root.
+=======
+      # The command implicitly runs from the repository root by default,
+      # which is correct as the Dockerfile and build context are at the root.
+>>>>>>> 5231183e856c1f47ffa7a6221b32824d5ae59583
